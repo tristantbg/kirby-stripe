@@ -39,19 +39,30 @@ In order for the plugin to work, you need to get your keys here [https://dashboa
 
 ### METHODS
 
-```KirbyStripe\getPrices($search = 'optional query')```
+```
+KirbyStripe\getPrices($search = 'optional query')
+```
 Gets all prices
 
-```KirbyStripe\getProducts($search = "active:'true' AND name~'name of product'")```
+```
+KirbyStripe\getProducts($search = "active:'true' AND name~'name of product'")
+```
 Gets all products
 https://stripe.com/docs/search#search-query-language
 
 ### ENDPOINTS
 
+```
 https://site.url/sck/api/prices
+```
+```
 https://site.url/sck/api/products
+```
 https://site.url/sck/checkout/{{kirbyProductPageUid}}
+```
+```
 https://site.url/sck/checkout/price/{{stripePriceId}}
+```
 
 ## Plugin Development
 
