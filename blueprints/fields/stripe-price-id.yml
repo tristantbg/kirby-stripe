@@ -1,0 +1,11 @@
+label: Stripe Price ID
+icon: code
+type: multiselect
+max: 1
+search: 3
+options:
+  type: api
+  url: "{{ site.url }}/sck/api/prices"
+  query: data
+  text: "{{ item.product_name }} ({{ item.price }})"
+  value: "{{ item.id }}"
