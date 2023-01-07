@@ -55,11 +55,15 @@ https://stripe.com/docs/search#search-query-language
 ```
 https://site.url/sck/api/prices
 ```
+
 ```
 https://site.url/sck/api/products
 ```
+
+```
 https://site.url/sck/checkout/{{kirbyProductPageUid}}
 ```
+
 ```
 https://site.url/sck/checkout/price/{{stripePriceId}}
 ```
