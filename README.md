@@ -39,15 +39,25 @@ In order for the plugin to work, you need to get your keys here [https://dashboa
 
 ### METHODS
 
-```
-KirbyStripe\getPrices($search = 'optional query')
-```
 Gets all prices
 
 ```
-KirbyStripe\getProducts($search = "active:'true' AND name~'name of product'")
+KirbyStripe\getPrices($search = 'optional query')
 ```
+
 Gets all products
+```
+KirbyStripe\getProducts($search = 'optional query')
+```
+
+Queries uses Stripe query language:
+
+example:
+
+```
+$search = "active:'true' AND name~'name of product'"
+```
+
 https://stripe.com/docs/search#search-query-language
 
 ### ENDPOINTS
