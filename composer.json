@@ -1,7 +1,7 @@
 
 {
   "name": "tristantbg/kirby-stripe",
-  "description": "Connect to Stripe and create easily checkouts and more",
+  "description": "Connect to Stripe to easily create product checkouts and more",
   "type": "kirby-plugin",
   "keywords": [
     "kirby",
