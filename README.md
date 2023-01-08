@@ -84,6 +84,8 @@ Add a .env file to the root of your Kirby plugin with the following properties:
   ]
 ```
 
+## Use the plugin
+
 ### API KEYS
 
 In order for the plugin to work, you need to get your keys here [https://dashboard.stripe.com/apikeys](https://dashboard.stripe.com/apikeys)
@@ -137,6 +139,15 @@ https://site.url/sck/checkout/{{kirbyProductPageUid}}
 
 ```
 https://site.url/sck/checkout/price/{{stripePriceId}}
+```
+
+### Price ID Field
+
+To easily connect a Kirby page to a Stripe price_id of a product:
+
+```
+stripePriceID:
+	extends: fields/stripe-price-id
 ```
 
 ## Plugin Development
