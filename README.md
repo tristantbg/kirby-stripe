@@ -81,7 +81,7 @@ Add a .env file to the root of your Kirby plugin with the following properties:
         ],
       ]
     ]
-  ],
+  ]
 ```
 
 ### API KEYS
