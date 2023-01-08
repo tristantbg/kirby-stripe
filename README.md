@@ -31,6 +31,59 @@ Add a .env file to the root of your Kirby plugin with the following properties:
 | STRIPE_TEST_PUBLISHABLE_KEY     | `String`  |
 | STRIPE_TEST_SECRET_KEY          | `String`  |
 
+## Kirby config defaults
+
+```
+'tristantbg.kirby-stripe' => [
+    'test_mode' => false,
+    'payment_method_types' => ['card'],
+    'automatic_tax' => true,
+    'allowed_countries' => [
+      'FR',
+      'US',
+      'CA',
+      'GB',
+      'IT',
+      'ES',
+      'DE',
+      'MF',
+      'PM',
+      'RE',
+      'MC',
+      'MQ',
+      'LU',
+      'LI',
+      'GG',
+      'GP',
+      'GR',
+      'FI',
+      'DK',
+      'BE'
+    ],
+    'shipping_rate_data' => [
+      'type' => 'fixed_amount',
+      'tax_behavior' => 'inclusive',
+      'fixed_amount' => [
+        // Amount*100 = 5€ => 500
+        'amount' => 500,
+        'currency' => 'eur',
+      ],
+      'display_name' => 'Standard shipping',
+      // Delivers between 5-7 business days
+      'delivery_estimate' => [
+        'minimum' => [
+          'unit' => 'business_day',
+          'value' => 5,
+        ],
+        'maximum' => [
+          'unit' => 'business_day',
+          'value' => 7,
+        ],
+      ]
+    ]
+  ],
+```
+
 ### API KEYS
 
 In order for the plugin to work, you need to get your keys here [https://dashboard.stripe.com/apikeys](https://dashboard.stripe.com/apikeys)
@@ -39,20 +92,28 @@ In order for the plugin to work, you need to get your keys here [https://dashboa
 
 ### METHODS
 
+Use Stripe PHP client for custom queries
+
+```
+$stripe_client = KirbyStripe\Auth::stripeClient();
+$products = $stripe_client->products->all(['limit' => 100])['data'];
+```
+
+
 Gets all prices
 
 ```
-KirbyStripe\getPrices($search = 'optional query')
+KirbyStripe\Methods::getPrices($search = 'optional query')
 ```
 
 Gets all products
 ```
-KirbyStripe\getProducts($search = 'optional query')
+KirbyStripe\Methods::getProducts($search = 'optional query')
 ```
 
 Queries uses Stripe query language:
 
-example:
+Example:
 
 ```
 $search = "active:'true' AND name~'name of product'"
@@ -60,7 +121,7 @@ $search = "active:'true' AND name~'name of product'"
 
 https://stripe.com/docs/search#search-query-language
 
-### ENDPOINTS
+### ROUTES ENDPOINTS
 
 ```
 https://site.url/sck/api/prices
