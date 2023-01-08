@@ -147,7 +147,7 @@ To easily connect a Kirby page to a Stripe price_id of a product:
 
 ```
 stripePriceID:
-	extends: fields/stripe-price-id
+  extends: fields/stripe-price-id
 ```
 
 ## Plugin Development
