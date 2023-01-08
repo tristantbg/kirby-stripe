@@ -7,6 +7,7 @@ $dotenv->load();
 
 Kirby::plugin('tristantbg/kirby-stripe', [
   'options' => [
+    'test_mode' => false,
     'payment_method_types' => ['card'],
     'automatic_tax' => true,
     'allowed_countries' => [
@@ -55,7 +56,7 @@ Kirby::plugin('tristantbg/kirby-stripe', [
   ],
   'translations' => [
     'en' => [
-      'field.blocks.stripe-product.title' => 'Select a product'
+      'field.blocks.stripe-product.select' => 'Select a product'
     ]
   ],
   'blueprints' => [
