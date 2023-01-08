@@ -1,0 +1,42 @@
+
+{
+  "name": "tristantbg/kirby-stripe",
+  "description": "Connect to Stripe and create easily checkouts and more",
+  "type": "kirby-plugin",
+  "keywords": [
+    "kirby",
+    "stripe",
+    "checkout",
+    "payments"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tristantbg/kirby-stripe#readme",
+  "authors": [
+    {
+      "name": "Tristan Bagot",
+      "email": "contact@tristanbagot.com",
+      "homepage": "https://tristanbagot.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "getkirby/composer-installer": "^1.2",
+    "vlucas/phpdotenv": "^5.4",
+    "stripe/stripe-php": "^10.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "KirbyStripe\\": "classes/KirbyStripe/"
+    }
+  },
+  "scripts": {
+    "dist": "composer install --no-dev --optimize-autoloader"
+  },
+  "config": {
+    "platform-check": false,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
+  }
+}
