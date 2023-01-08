@@ -141,7 +141,7 @@ https://site.url/sck/checkout/{{kirbyProductPageUid}}
 https://site.url/sck/checkout/price/{{stripePriceId}}
 ```
 
-### Price ID Field
+### PRICE_ID KIRBY FIELD
 
 To easily connect a Kirby page to a Stripe price_id of a product:
 
