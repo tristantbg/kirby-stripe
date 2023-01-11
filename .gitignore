@@ -1,3 +1,6 @@
+#ENV file
+.env
+
 # OS files
 .DS_Store
 
