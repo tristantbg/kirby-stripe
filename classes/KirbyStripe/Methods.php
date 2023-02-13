@@ -38,7 +38,7 @@ class Methods
         ],
         'shipping_options' => [
           [
-            'shipping_rate_data' => option('tristantbg.kirby-stripe.shipping_rate_data')
+            'shipping_rate_data' => $shipping_rate_data
           ]
         ],
         'mode' => 'payment',
