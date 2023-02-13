@@ -7,7 +7,6 @@ $dotenv->load();
 
 Kirby::plugin('tristantbg/kirby-stripe', [
   'options' => [
-    'test_mode' => false,
     'payment_method_types' => ['card'],
     'automatic_tax' => true,
     'allowed_countries' => [
@@ -36,8 +35,8 @@ Kirby::plugin('tristantbg/kirby-stripe', [
       'type' => 'fixed_amount',
       'tax_behavior' => 'inclusive',
       'fixed_amount' => [
-        // Amount*100 = 5€ => 500
-        'amount' => 500,
+        // Amount*100 = 10€ => 1000
+        'amount' => 1000,
         'currency' => 'eur',
       ],
       'display_name' => 'Standard shipping',
@@ -56,7 +55,7 @@ Kirby::plugin('tristantbg/kirby-stripe', [
   ],
   'translations' => [
     'en' => [
-      'field.blocks.stripe-product.select' => 'Select a product'
+      'field.blocks.stripe-product.title' => 'Select a product'
     ]
   ],
   'blueprints' => [
@@ -72,7 +71,7 @@ Kirby::plugin('tristantbg/kirby-stripe', [
             'success_url' => $product->url(),
             'cancel_url' => $product->url()
           ];
-          if ($product->stripeShippingRateAmount()->isNotEmpty()) $options['shipping_rate_amount'] = $product->stripeShippingRateAmount();
+          if ($product->stripeShippingRateAmount()->isNotEmpty()) $options['shipping_rate_amount'] = $product->stripeShippingRateAmount()->toFloat() * 100;
           KirbyStripe\Methods::checkoutPriceID($product->stripePriceID(), $options);
         }
       }
