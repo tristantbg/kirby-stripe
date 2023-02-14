@@ -25,6 +25,8 @@ Kirby::plugin('tristantbg/kirby-stripe', [
       'MQ',
       'LU',
       'LI',
+      'AT',
+      'MX',
       'GG',
       'GP',
       'GR',
