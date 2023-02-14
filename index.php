@@ -10,7 +10,7 @@ Kirby::plugin('tristantbg/kirby-stripe', [
     'test_mode' => false,
     'payment_method_types' => ['card'],
     'automatic_tax' => true,
-    'allowed_countries' => ['AL', 'AD', 'AM', 'AT', 'AZ', 'BY', 'BE', 'BA', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FO', 'FI', 'FR', 'GE', 'DE', 'GI', 'GR', 'HU', 'IS', 'IE', 'IM', 'IT', 'KZ', 'XK', 'LV', 'LI', 'LT', 'LU', 'MT', 'MD', 'MC', 'ME', 'NL', 'MK', 'NO', 'PL', 'PT', 'RO', 'RU', 'SM', 'RS', 'SK', 'SI', 'ES', 'SE', 'CH', 'UA', 'GB', 'MX', 'CA', 'US', 'JP', 'KR', 'CN', 'RU'],
+    'allowed_countries' => ['AD', 'AL', 'AM', 'AT', 'AZ', 'BA', 'BE', 'BG', 'BY', 'CA', 'CH', 'CN', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FO', 'FR', 'GB', 'GE', 'GG', 'GI', 'GR', 'HR', 'HU', 'IE', 'IM', 'IS', 'IT', 'JP', 'KR', 'KZ', 'LI', 'LT', 'LU', 'LV', 'MC', 'MD', 'ME', 'MK', 'MQ', 'MT', 'MX', 'NL', 'NO', 'PM', 'PL', 'PT', 'RE', 'RO', 'RS', 'RU', 'SE', 'SI', 'SK', 'SM', 'UA', 'US', 'XK'],
     'shipping_rate_data' => [
       'type' => 'fixed_amount',
       'tax_behavior' => 'inclusive',
