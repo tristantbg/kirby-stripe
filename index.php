@@ -2,7 +2,7 @@
 
 @include_once __DIR__ . '/vendor/autoload.php';
 
-$dotenv = new \Dotenv\Dotenv(__DIR__);
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 Kirby::plugin('tristantbg/kirby-stripe', [
