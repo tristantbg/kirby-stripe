@@ -5,18 +5,18 @@
 namespace Stripe;
 
 /**
- * A <code>Payout</code> object is created when you receive funds from Stripe, or
- * when you initiate a payout to either a bank account or debit card of a <a
- * href="/docs/connect/bank-debit-card-payouts">connected Stripe account</a>. You
- * can retrieve individual payouts, as well as list all payouts. Payouts are made
- * on <a href="/docs/connect/manage-payout-schedule">varying schedules</a>,
- * depending on your country and industry.
+ * A <code>Payout</code> object is created when you receive funds from Stripe, or when you
+ * initiate a payout to either a bank account or debit card of a <a href="/docs/connect/bank-debit-card-payouts">connected
+ * Stripe account</a>. You can retrieve individual payouts,
+ * as well as list all payouts. Payouts are made on <a href="/docs/connect/manage-payout-schedule">varying
+ * schedules</a>, depending on your country and
+ * industry.
  *
- * Related guide: <a href="https://stripe.com/docs/payouts">Receiving Payouts</a>.
+ * Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount Amount (in %s) to be transferred to your bank account or debit card.
+ * @property int $amount Amount (in cents (or local equivalent)) to be transferred to your bank account or debit card.
  * @property int $arrival_date Date the payout is expected to arrive in the bank. This factors in delays like weekends or bank holidays.
  * @property bool $automatic Returns <code>true</code> if the payout was created by an <a href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a>, and <code>false</code> if it was <a href="https://stripe.com/docs/payouts#manual-payouts">requested manually</a>.
  * @property null|string|\Stripe\BalanceTransaction $balance_transaction ID of the balance transaction that describes the impact of this payout on your account balance.
@@ -31,6 +31,7 @@ namespace Stripe;
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is only supported for payouts to debit cards. (See <a href="https://stripe.com/blog/instant-payouts-for-marketplaces">Instant payouts for marketplaces</a> for more information.)
  * @property null|string|\Stripe\Payout $original_payout If the payout reverses another, this is the ID of the original payout.
+ * @property string $reconciliation_status If <code>completed</code>, the <a href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance Transactions API</a> may be used to list all Balance Transactions that were paid out in this payout.
  * @property null|string|\Stripe\Payout $reversed_by If the payout was reversed, this is the ID of the payout that reverses this payout.
  * @property string $source_type The source balance this payout came from. One of <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $statement_descriptor Extra information about a payout to be displayed on the user's bank statement.
@@ -45,6 +46,22 @@ class Payout extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
+
+    const METHOD_INSTANT = 'instant';
+    const METHOD_STANDARD = 'standard';
+
+    const RECONCILIATION_STATUS_COMPLETED = 'completed';
+    const RECONCILIATION_STATUS_IN_PROGRESS = 'in_progress';
+    const RECONCILIATION_STATUS_NOT_APPLICABLE = 'not_applicable';
+
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_FAILED = 'failed';
+    const STATUS_IN_TRANSIT = 'in_transit';
+    const STATUS_PAID = 'paid';
+    const STATUS_PENDING = 'pending';
+
+    const TYPE_BANK_ACCOUNT = 'bank_account';
+    const TYPE_CARD = 'card';
 
     const FAILURE_ACCOUNT_CLOSED = 'account_closed';
     const FAILURE_ACCOUNT_FROZEN = 'account_frozen';
@@ -61,18 +78,6 @@ class Payout extends ApiResource
     const FAILURE_INVALID_CURRENCY = 'invalid_currency';
     const FAILURE_NO_ACCOUNT = 'no_account';
     const FAILURE_UNSUPPORTED_CARD = 'unsupported_card';
-
-    const METHOD_INSTANT = 'instant';
-    const METHOD_STANDARD = 'standard';
-
-    const STATUS_CANCELED = 'canceled';
-    const STATUS_FAILED = 'failed';
-    const STATUS_IN_TRANSIT = 'in_transit';
-    const STATUS_PAID = 'paid';
-    const STATUS_PENDING = 'pending';
-
-    const TYPE_BANK_ACCOUNT = 'bank_account';
-    const TYPE_CARD = 'card';
 
     /**
      * @param null|array $params
